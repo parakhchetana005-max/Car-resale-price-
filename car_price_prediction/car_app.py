@@ -165,6 +165,8 @@ if not os.path.exists(MODEL_FILE):
     st.error("❌ Model file missing.")
     st.stop()
 
+MODEL_FILE = "priceprediction.pkl"
+
 model = joblib.load(MODEL_FILE)
 FEATURES = list(model.feature_names_in_)
 
