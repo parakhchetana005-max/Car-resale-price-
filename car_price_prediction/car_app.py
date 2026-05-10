@@ -159,22 +159,16 @@ apply_theme()
 # LOAD MODEL
 # ==============================================================
 MODEL_FILE = "priceprediction.pkl"
-DATA_FILE = "cardekho_imputated.csv"
 
 if not os.path.exists(MODEL_FILE):
-    st.error("❌ Model file missing.")
+    st.error("❌ Model file missing. Please check GitHub upload.")
     st.stop()
 
-MODEL_FILE = "priceprediction.pkl"
-
 model = joblib.load(MODEL_FILE)
-FEATURES = list(model.feature_names_in_)
 
-try:
-    COEFS = model.coef_.ravel()
-except:
-    COEFS = None
+FEATURES = list(model.feature_names_in_) if hasattr(model, "feature_names_in_") else None
 
+COEFS = model.coef_.ravel() if hasattr(model, "coef_") else None
 
 # ==============================================================
 # LOAD / SYNTHETIC DATA
