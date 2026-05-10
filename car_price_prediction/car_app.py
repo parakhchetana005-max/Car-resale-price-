@@ -164,7 +164,7 @@ if not os.path.exists(MODEL_FILE):
     st.error("❌ Model file missing. Please check GitHub upload.")
     st.stop()
 
-model = joblib.load(MODEL_FILE)
+model = joblib.load("priceprediction.pkl")
 
 FEATURES = list(model.feature_names_in_) if hasattr(model, "feature_names_in_") else None
 
